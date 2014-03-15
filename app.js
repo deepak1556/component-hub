@@ -8,8 +8,8 @@ appAPI.ready(function($) {
     var pathParts = document.location.pathname.match(/\/+([^/]*)\/([^(/|\?)]*)/)
     if (!pathParts) return;
 
-    // Does the repo have a package.json?
-    if (!$("table.files").text().match(/package\.json/)) return;
+    // Does the repo have a component.json?
+    if (!$("table.files").text().match(/component\.json/)) return;
 
     // Assemble API URL for fetching raw json from github
     var user = pathParts[1]
@@ -89,9 +89,9 @@ appAPI.ready(function($) {
       appAPI.request.get(depUrl, function(data) {
           var dep = JSON.parse(data);
 	  $("#dep-"+dep.repo).append(dep.description)
-              applyStyles()
-	  });
-      }
+          applyStyles()
+      });
+    }
     
    // Dev Dependencies
    // -------------------------------------------------------------------------------
